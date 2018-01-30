@@ -4,7 +4,7 @@ export default class Account extends Component {
   constructor(props){
     super(props)
     this.state = {
-      balance: 10.0
+      balance: 1000.0
     }
   }
   handleButtonClick(e, operator) {
@@ -22,6 +22,7 @@ export default class Account extends Component {
       case "Withdraw":
         newBalance -= amount;
         break;        
+      default:
     }
     // set the balance to the newBalance using the setState method (necessary)
     this.setState({
@@ -36,8 +37,11 @@ export default class Account extends Component {
         <h2>{this.props.name}</h2>
         <div className="balance">${this.state.balance}</div>
         <input type="text" placeholder="enter an amount" ref={(input) => this.inputBox = input} />
-        <input type="button" value="Deposit" onClick={(e) => this.handleButtonClick(e, "Deposit")} />
-        <input type="button" value="Withdraw" onClick={(e) => this.handleButtonClick(e, "Withdraw")} />
+        <div>
+          <input type="button" value="Deposit" onClick={(e) => this.handleButtonClick(e, "Deposit")} />
+          <input type="button" value="Withdraw" onClick={(e) => this.handleButtonClick(e, "Withdraw")} />
+          <input type="button" value="Transfer" onClick={(e) => console.log()} />
+        </div>
       </div>
     )
   }
